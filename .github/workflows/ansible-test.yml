@@ -30,7 +30,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
 
-      - name: Install dependencies
+      - name: Install dependencies test
         run: |
           sudo apt-get install -y libyaml-dev python3-venv
           python -m pip install --upgrade pip
