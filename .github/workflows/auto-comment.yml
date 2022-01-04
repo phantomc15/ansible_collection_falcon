@@ -1,5 +1,5 @@
 name: Auto Comment
-on: [issues, pull_request]
+on: [issues, pull_request_target]
 jobs:
   run:
     runs-on: ubuntu-latest
@@ -16,5 +16,5 @@ jobs:
             👋 @{{ author }}
             Thank you for raising your pull request.
 
-            All pull requests are reviewed and must be approved prior to certain automated workflows running. We will review it
+            This pull requests requires review and must be approved prior to certain automated workflows running. We will review it
             as soon as possible.
