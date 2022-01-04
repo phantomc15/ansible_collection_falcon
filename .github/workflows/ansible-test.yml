@@ -2,18 +2,30 @@ name: Ansible Test
 
 on:
   push:
+    branches: [ main ]
     paths:
       - 'plugins/**'
       - '.github/workflows/ansible-test.yml'
 
   pull_request_target:
+    branches: [ main ]
     paths:
       - 'plugins/**'
       - '.github/workflows/ansible-test.yml'
 
 jobs:
+  approve:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Approve
+        run: echo For security reasons, all pull requests need to be approved first!
+
   ansible-test:
     runs-on: ubuntu-18.04
+    needs: [approve]
+    environment:
+      name: Integrate Pull Request
     env:
       PY_COLORS: 1
       ANSIBLE_FORCE_COLOR: 1

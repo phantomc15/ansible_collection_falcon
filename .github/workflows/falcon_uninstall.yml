@@ -1,18 +1,30 @@
 name: "crowdstrike.falcon.falcon_uninstall"
 on:
   push:
+    branches: [ main ]
     paths:
       - 'roles/falcon_uninstall/**'
       - 'molecule/falcon_uninstall/**'
       - '.github/workflows/falcon_uninstall.yml'
   pull_request_target:
+    branches: [ main ]
     paths:
       - 'roles/falcon_uninstall/**'
       - 'molecule/falcon_uninstall/**'
       - '.github/workflows/falcon_uninstall.yml'
 jobs:
+  approve:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Approve
+        run: echo For security reasons, all pull requests need to be approved first!
+
   molecule:
     runs-on: ubuntu-18.04
+    needs: [approve]
+    environment:
+      name: Integrate Pull Request
     env:
       PY_COLORS: 1
       ANSIBLE_FORCE_COLOR: 1
