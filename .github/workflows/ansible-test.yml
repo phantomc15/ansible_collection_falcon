@@ -14,16 +14,8 @@ on:
       - '.github/workflows/ansible-test.yml'
 
 jobs:
-  approve:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Approve
-        run: echo For security reasons, all pull requests need to be approved first!
-
   ansible-test:
     runs-on: ubuntu-18.04
-    needs: [approve]
     environment:
       name: Integrate Pull Request
     env:
